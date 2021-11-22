@@ -1,0 +1,6 @@
+# Maths
+numpy
+
+# Others
+Pillow
+rich

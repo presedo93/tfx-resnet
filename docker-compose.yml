@@ -1,0 +1,13 @@
+version: "3.8"
+
+services:
+  tfx:
+    image: tensorflow/serving
+    container_name: tfserving_resnet
+    environment:
+      - MODEL_NAME=resnet
+    volumes:
+      - "${PWD}/assets/resnet:/models/resnet"
+    ports:
+      - 8501:8501
+    restart: unless-stopped
