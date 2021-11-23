@@ -1,6 +1,11 @@
 # Maths
+scikit-learn
 numpy
 
+# Image
+opencv-python-headless
+
 # Others
-Pillow
+pre-commit
+requests
 rich

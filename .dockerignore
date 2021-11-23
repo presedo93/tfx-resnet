@@ -2,8 +2,3 @@ __pycache__/
 *.pyc
 .vscode/
 assets/
-
-# Images
-*.jpeg
-*.png
-*.jpg

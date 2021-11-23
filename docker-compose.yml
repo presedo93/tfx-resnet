@@ -1,6 +1,20 @@
 version: "3.8"
 
 services:
+  resnet-api:
+    build:
+      context: ./
+      dockerfile: docker/Dockerfile
+    image: resnet-api
+    container_name: resnet-api
+    volumes:
+      - "${PWD}:/home/scientist/resnet-api"
+    networks:
+      - tfx-net
+    depends_on:
+    - tfx
+    command:  ["python", "-m", "cli", "--server_url", "http://tfserving_resnet", "--source", "https://tensorflow.org/images/blogs/serving/cat.jpg", "--target", "285"]
+
   tfx:
     image: tensorflow/serving
     container_name: tfserving_resnet
@@ -10,4 +24,10 @@ services:
       - "${PWD}/assets/resnet:/models/resnet"
     ports:
       - 8501:8501
+    networks:
+      - tfx-net
     restart: unless-stopped
+
+networks:
+  tfx-net:
+    name: tfx-net
